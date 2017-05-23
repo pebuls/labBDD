@@ -12,8 +12,8 @@ public class EstimatedTimeArrival {
 	    throw new PendingException();
 	}
 
-	@Zakładając("^następny pociąg odjeżdża o \"([^\"]*)\" na linii \"([^\"]*)\"$")
-	public void następny_pociąg_odjeżdża_o_na_linii(String arg1, String arg2) throws Throwable {
+	@Zakładając("^następny pociąg odjeżdża o (\\d+):(\\d+) na linii \"([^\"]*)\"$")
+	public void następny_pociąg_odjeżdża_o_na_linii(int arg1, int arg2, String arg3) throws Throwable {
 	    // Write code here that turns the phrase above into concrete actions
 	    throw new PendingException();
 	}
