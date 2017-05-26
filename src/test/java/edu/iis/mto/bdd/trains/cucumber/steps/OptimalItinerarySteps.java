@@ -34,10 +34,11 @@ public class OptimalItinerarySteps {
     @Wtedy("^powinienem uzyskać informację o pociągach o:$")
     public void shouldBeInformedAbout(@Transform(JodaLocalTimeConverter.class) List<LocalTime> expectedTrainTimes) {
 
-    	Assert.assertThat(expectedTrainTimes.size(), Matchers.equalTo(3));
+    	Assert.assertThat(expectedTrainTimes.size(), Matchers.equalTo(4));
     	
     	Assert.assertThat(expectedTrainTimes.get(0), Matchers.equalTo(new LocalTime(8, 2)));
     	Assert.assertThat(expectedTrainTimes.get(1), Matchers.equalTo(new LocalTime(8, 11)));
     	Assert.assertThat(expectedTrainTimes.get(2), Matchers.equalTo(new LocalTime(8, 14)));
+    	Assert.assertThat(expectedTrainTimes.get(3), Matchers.equalTo(new LocalTime(8, 21)));
     }
 }

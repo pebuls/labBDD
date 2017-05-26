@@ -13,7 +13,7 @@ public class IntineraryService {
 	
 	private TimetableService timetableService;
 	
-	private final int DEFAULT_NEXT_DEPARTURES_SIZE = 3;
+	private final int MINUTES_DEPARTURE_IS_WITHIN = 30;
 	
 	public IntineraryService(TimetableService timetableService) {
 		this.timetableService = timetableService;
@@ -22,17 +22,13 @@ public class IntineraryService {
 	public List<LocalTime> findNextDepartures(String departure, String destination,
             @Transform(JodaLocalTimeConverter.class) LocalTime startTime) {
 		
-		int numberOfDepartures = 0;
 		List<Line> lines = timetableService.findLinesThrough(departure, destination);
 		List<LocalTime> allDepartures = timetableService.findArrivalTimes(lines.get(0), destination);
 		
 		List<LocalTime> nextDepartures = new ArrayList<LocalTime>();
 		for (LocalTime time : allDepartures) {
-			if (numberOfDepartures == DEFAULT_NEXT_DEPARTURES_SIZE) 
-				break;
-			if (time.isAfter(startTime)) {
+			if (time.isAfter(startTime) && time.minusMinutes(MINUTES_DEPARTURE_IS_WITHIN).isBefore(startTime)) {
 				nextDepartures.add(time);
-				numberOfDepartures++;
 			}
 		}
 		
