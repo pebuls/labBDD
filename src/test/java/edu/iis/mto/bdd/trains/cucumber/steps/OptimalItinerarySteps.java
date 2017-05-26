@@ -2,7 +2,11 @@ package edu.iis.mto.bdd.trains.cucumber.steps;
 
 import java.util.List;
 
+import org.hamcrest.Matchers;
 import org.joda.time.LocalTime;
+import org.junit.Assert;
+
+
 
 import cucumber.api.PendingException;
 import cucumber.api.Transform;
@@ -27,6 +31,11 @@ public class OptimalItinerarySteps {
 
     @Wtedy("^powinienem uzyskać informację o pociągach o:$")
     public void shouldBeInformedAbout(@Transform(JodaLocalTimeConverter.class) List<LocalTime> expectedTrainTimes) {
-        throw new PendingException();
+
+    	Assert.assertThat(expectedTrainTimes.size(), Matchers.equalTo(3));
+    	
+    	Assert.assertThat(expectedTrainTimes.get(0), Matchers.equalTo(new LocalTime(8, 2)));
+    	Assert.assertThat(expectedTrainTimes.get(1), Matchers.equalTo(new LocalTime(8, 11)));
+    	Assert.assertThat(expectedTrainTimes.get(2), Matchers.equalTo(new LocalTime(8, 14)));
     }
 }
