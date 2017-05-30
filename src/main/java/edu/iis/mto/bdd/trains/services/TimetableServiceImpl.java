@@ -1,6 +1,8 @@
 package edu.iis.mto.bdd.trains.services;
 
 import com.google.common.collect.Lists;
+import cucumber.api.Transform;
+import edu.iis.mto.bdd.trains.model.JodaLocalTimeConverter;
 import edu.iis.mto.bdd.trains.model.Line;
 import org.joda.time.LocalTime;
 
@@ -84,4 +86,19 @@ public class TimetableServiceImpl implements TimetableService {
         // TODO: Call the back-end service to retrieve this data
         return null;
     }
+
+    public List<LocalTime> findDeparturesTime(String departure, String destination,
+                                              @Transform(JodaLocalTimeConverter.class) LocalTime startTime) {
+
+        List<LocalTime> departuresTime = new ArrayList<>();
+        for (LocalTime time : departureTimes) {
+            if (time.isAfter(startTime) && time.isBefore(startTime.plusMinutes(15))) {
+                departuresTime.add(time);
+            }
+        }
+
+        return departuresTime;
+    }
+
+
 }
