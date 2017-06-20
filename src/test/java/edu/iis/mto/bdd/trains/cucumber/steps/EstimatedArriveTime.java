@@ -10,13 +10,13 @@ import cucumber.api.java.pl.Zakładając;
  * Created by Wojciech Szczepaniak on 20.06.2017.
  */
 public class EstimatedArriveTime {
-    @Zakładając("^chcę się dostać z \"([^\"]*)\" do \"([^\"]*)\"$")
+    @Zakładając("^chcę się dostać z ([^\"]*) do ([^\"]*)$")
     public void chcęSięDostaćZDo(String srcLocation, String dstLocation) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
 
-    @I("^następny pociąg odjeżdża o \"([^\"]*)\" na linii \"([^\"]*)\"$")
+    @I("^następny pociąg odjeżdża o ([^\"]*) na linii ([^\"]*)$")
     public void następnyPociągOdjeżdżaONaLinii(String departureTime, String lineName) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
@@ -28,7 +28,7 @@ public class EstimatedArriveTime {
         throw new PendingException();
     }
 
-    @Wtedy("^powinienem uzyskać następujący szacowany czas przyjazdu: \"([^\"]*)\"$")
+    @Wtedy("^powinienem uzyskać następujący szacowany czas przyjazdu: ([^\"]*)$")
     public void powinienemUzyskaćNastępującySzacowanyCzasPrzyjazdu(String arriveTime) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
